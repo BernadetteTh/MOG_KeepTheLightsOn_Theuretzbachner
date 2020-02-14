@@ -145,7 +145,7 @@ public class MarathonHandler : MonoBehaviour
                 }
                 timelight.GetComponentInChildren<Light2D>().intensity = 0.5f;
                 timelight.GetComponent<SpriteRenderer>().color = redColor;
-                lightTimer = (lightTimer - 1) * 2;
+                lightTimer = (lightTimer - 1) * 3;
                 isReady = false;
             }
         }

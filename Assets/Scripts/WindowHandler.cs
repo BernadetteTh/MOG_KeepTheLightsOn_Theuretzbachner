@@ -6,9 +6,6 @@ public class WindowHandler : MonoBehaviour
     public static float posX;
     public static float posY;
 
-    public AudioClip lightOut;
-    public AudioClip lightOn;
-
     bool isLit;
     Collider2D col;
     Color windowColor;
@@ -35,10 +32,10 @@ public class WindowHandler : MonoBehaviour
             {
                 if (isLit == false)
                 {
+                    // light turns back on
                     touchCollider.GetComponentInChildren<UnityEngine.Experimental.Rendering.LWRP.Light2D>().intensity = 0.5f;
                     isLit = true;
                     touchCollider.GetComponent<SpriteRenderer>().color = windowColor;
-                    AudioSource.PlayClipAtPoint(lightOn, transform.position);
                 }
             }
         }
@@ -69,7 +66,6 @@ public class WindowHandler : MonoBehaviour
             isLit = false;
             GetComponentInChildren<UnityEngine.Experimental.Rendering.LWRP.Light2D>().intensity = 0;
             GetComponent<SpriteRenderer>().color = new Color(182, 182, 182);
-            AudioSource.PlayClipAtPoint(lightOut, transform.position);
         }
     }
 }

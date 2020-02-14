@@ -10,6 +10,8 @@ TagManager:
   - Timelight
   - Timelightpoint
   - Leveltime
+  - Audio
+  - AudioBtn
   layers:
   - Default
   - TransparentFX

@@ -62,43 +62,17 @@ public class ThiefHandler : MonoBehaviour
             }
         }
 
-
+        // thief moves as long as target position isn't reached
         if ((Vector2)transform.position != targetPosition)
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
         }
         else
         {
+            // if target is reached, set new target
             SetRandomTargetPosition();
         }
     }
-
-    /**
-    public void OnMouseDown()
-    {
-        Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Collider2D touchCollider = Physics2D.OverlapPoint(touchPosition);
-
-        if (touchCollider && touchCollider.gameObject == this.gameObject)
-        {
-            thiefClicked = true;
-        }
-    }
-
-
-    public void OnMouseDrag()
-    {
-        if (thiefClicked)
-        {
-            Vector2 curPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = curPosition;
-            if (Input.GetMouseButtonUp(0))
-            {
-                thiefClicked = false;
-            }
-        }
-    }
-*/
 
     /**
      * set target position to random vector still within the screen
@@ -122,7 +96,7 @@ public class ThiefHandler : MonoBehaviour
     {
         if (collision.tag == "Light")
         {
-            double newSpeed = (double)speed * 1.02;
+            double newSpeed = (double)speed * 1.05;
             speed = (float)newSpeed;
         }
     }

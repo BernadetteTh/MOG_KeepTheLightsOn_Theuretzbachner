@@ -96,6 +96,7 @@ public class SceneHandler : MonoBehaviour
         int levelSeconds = (int)Time.timeSinceLevelLoad;
         levelTimeText.text = levelSeconds + " / " + levelTimer.ToString();
 
+        // if timelight exists
         if (withTimelight)
         {
             if (Time.timeSinceLevelLoad > lightTimer && isReady == false)
@@ -110,6 +111,8 @@ public class SceneHandler : MonoBehaviour
                 OnTimelightPress();
             }
         }
+
+        // check if leve time has run out, game ends
         if (Time.timeSinceLevelLoad > levelTimer)
         {
             hasWon = true;
@@ -117,6 +120,7 @@ public class SceneHandler : MonoBehaviour
             SceneManager.LoadScene("EndScene");
         }
 
+        // check if all lights are out or not
         bool allOut = true;
         foreach (GameObject w in allWindows)
         {
@@ -126,6 +130,7 @@ public class SceneHandler : MonoBehaviour
             }
         }
 
+        // all the ligths have gone out, game lost
         if (allOut)
         {
             hasWon = false;
@@ -149,7 +154,7 @@ public class SceneHandler : MonoBehaviour
     }
 
     /**
-     * if game object "timelight" is clicked / pressed and is ready,
+     * if game object "timelight" is clicked and is ready,
      * it slows down all the thieves to half their speed and resets
      */
     public void OnTimelightPress()
@@ -168,7 +173,7 @@ public class SceneHandler : MonoBehaviour
                 }
                 timelight.GetComponentInChildren<Light2D>().intensity = 0.5f;
                 timelight.GetComponent<SpriteRenderer>().color = redColor;
-                lightTimer = (lightTimer - 1) * 2;
+                lightTimer = (lightTimer - 1) * 3;
                 isReady = false;
             }
         }
@@ -205,6 +210,7 @@ public class SceneHandler : MonoBehaviour
 
         Vector3 randomWindowPos = new Vector3(0, 0, 0);
 
+        // cechk if new random window position is valid or something else is already there
         for (int i = 0; i < 10; i++)
         {
             if (validPosition == false)
@@ -239,6 +245,7 @@ public class SceneHandler : MonoBehaviour
                     }
                 }
                
+                // if position is valid, create one of two possible windows
                 if (validPosition)
                 {
                     switch (_prefabName)

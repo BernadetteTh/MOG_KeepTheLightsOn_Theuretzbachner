@@ -6,9 +6,6 @@ public class EndSceneHandler : MonoBehaviour
 {
     public Text gameResult;
 
-    public AudioClip levelWon;
-    public AudioClip levelLost;
-
     public int prevLevel;
 
     /**
@@ -20,13 +17,11 @@ public class EndSceneHandler : MonoBehaviour
         prevLevel = SceneHandler.levelDifficulty;
         if (SceneHandler.hasWon == true)
         {
-            AudioSource.PlayClipAtPoint(levelWon, transform.position);
             FindObjectOfType<Text>().color = Color.green;
             gameResult.text = "success!";
         }
         else
         {
-            AudioSource.PlayClipAtPoint(levelLost, transform.position);
             FindObjectOfType<Text>().color = Color.red;
             if (MarathonHandler.isMarathon)
             {
@@ -44,6 +39,11 @@ public class EndSceneHandler : MonoBehaviour
     /** Load start screne */
     public void StartAgain()
     {
+        // deletes audio so it doesn't duplicate
+        if (GameObject.FindGameObjectWithTag("Audio") != null)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Audio"));
+        }
         SceneManager.LoadScene("StartScene", LoadSceneMode.Single);
     }
 

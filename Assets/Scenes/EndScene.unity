@@ -229,8 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameResult: {fileID: 545444357}
-  levelWon: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
-  levelLost: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
   prevLevel: 0
 --- !u!4 &603085052
 Transform:

@@ -12,7 +12,7 @@ public class StartHandler : MonoBehaviour
         levelDifficulty = _level;
     }
 
-    /** load */
+    /** load the right scene*/
     public void StartGameScene()
     {
         switch (levelDifficulty)
